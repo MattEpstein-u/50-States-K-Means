@@ -1,68 +1,20 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const stateFlags = [
-        'Alabama.png', 'Alaska.png', 'Arizona.png', 'Arkansas.png', 'California.png',
-        'Colorado.png', 'Connecticut.png', 'Delaware.png', 'Florida.png', 'Georgia.png',
-        'Hawaii.png', 'Idaho.png', 'Illinois.png', 'Indiana.png', 'Iowa.png', 'Kansas.png',
-        'Kentucky.png', 'Louisiana.png', 'Maine.png', 'Maryland.png', 'Massachusetts.png',
-        'Michigan.png', 'Minnesota.png', 'Mississippi.png', 'Missouri.png', 'Montana.png',
-        'Nebraska.png', 'Nevada.png', 'New_Hampshire.png', 'New_Jersey.png', 'New_Mexico.png',
-        'New_York.png', 'North_Carolina.png', 'North_Dakota.png', 'Ohio.png', 'Oklahoma.png',
-        'Oregon.png', 'Pennsylvania.png', 'Rhode_Island.png', 'South_Carolina.png',
-        'South_Dakota.png', 'Tennessee.png', 'Texas.png', 'Utah.png', 'Vermont.png',
-        'Virginia.png', 'Washington.png', 'West_Virginia.png', 'Wisconsin.png', 'Wyoming.png'
-    ];
+    let stateData = [];
 
-    const imageDir = 'state_flags_png/';
-    const thumbDir = 'state_flags_thumbnails/';
-
-    async function getAverageColor(imgUrl) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.crossOrigin = "Anonymous";
-            img.src = imgUrl;
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
-
-                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const data = imageData.data;
-                let r = 0, g = 0, b = 0;
-
-                for (let i = 0; i < data.length; i += 4) {
-                    r += data[i];
-                    g += data[i + 1];
-                    b += data[i + 2];
-                }
-
-                const pixelCount = data.length / 4;
-                const avgR = r / pixelCount;
-                const avgG = g / pixelCount;
-                const avgB = b / pixelCount;
-
-                resolve({
-                    r: avgR / 255,
-                    g: avgG / 255,
-                    b: avgB / 255,
-                    rgbString: `rgb(${Math.round(avgR)}, ${Math.round(avgG)}, ${Math.round(avgB)})`
-                });
-            };
-            img.onerror = reject;
-        });
-    }
-
-    const stateData = [];
-    for (const flag of stateFlags) {
-        const stateName = flag.replace('.png', '').replace(/_/g, ' ');
-        const colorData = await getAverageColor(imageDir + flag);
-        stateData.push({
-            name: stateName,
-            color: [colorData.r, colorData.g, colorData.b],
-            rgbString: colorData.rgbString,
-            thumbnail: thumbDir + flag
-        });
+    async function loadStateData() {
+        try {
+            const response = await fetch('state_colors.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            stateData = await response.json();
+        } catch (error) {
+            console.error("Could not load state data:", error);
+            const errorDiv = document.createElement('div');
+            errorDiv.textContent = 'Error loading state color data. Please ensure state_colors.json is available.';
+            errorDiv.style.color = 'red';
+            document.body.insertBefore(errorDiv, document.body.firstChild);
+        }
     }
 
     function distance(a, b) {
@@ -71,20 +23,55 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function runKMeans() {
         const K = 4;
-        // Generate random initial centroids independent of data points
-        let centroids = Array.from({ length: K }, () => [
-            Math.random(),
-            Math.random(),
-            Math.random()
-        ]);
-        let clusters = [];
+        let bestClusters = [];
+        let bestCentroids = [];
+        let bestInertia = Infinity;
 
-        for (let iter = 0; iter < 20; iter++) {
-            // Assign clusters
-            clusters = Array.from({ length: K }, () => []);
+        // Run K-Means 32 times and keep the best result
+        for (let run = 0; run < 32; run++) {
+            // Generate random initial centroids independent of data points
+            let centroids = Array.from({ length: K }, () => [
+                Math.random(),
+                Math.random(),
+                Math.random()
+            ]);
+            let clusters = [];
+
+            for (let iter = 0; iter < 20; iter++) {
+                // Assign clusters
+                clusters = Array.from({ length: K }, () => []);
+                stateData.forEach((state, i) => {
+                    let minDist = Infinity;
+                    let clusterIndex = 0;
+                    centroids.forEach((centroid, j) => {
+                        const dist = distance(state.color, centroid);
+                        if (dist < minDist) {
+                            minDist = dist;
+                            clusterIndex = j;
+                        }
+                    });
+                    if (!clusters[clusterIndex]) clusters[clusterIndex] = [];
+                    clusters[clusterIndex].push(i);
+                });
+
+                // Update centroids
+                centroids = clusters.map(cluster => {
+                    if (cluster.length === 0) return [Math.random(), Math.random(), Math.random()];
+                    const newCentroid = [0, 0, 0];
+                    cluster.forEach(stateIndex => {
+                        newCentroid[0] += stateData[stateIndex].color[0];
+                        newCentroid[1] += stateData[stateIndex].color[1];
+                        newCentroid[2] += stateData[stateIndex].color[2];
+                    });
+                    return newCentroid.map(v => v / cluster.length);
+                });
+            }
+
+            // Calculate inertia for this run
+            let inertia = 0;
             stateData.forEach((state, i) => {
-                let minDist = Infinity;
                 let clusterIndex = 0;
+                let minDist = Infinity;
                 centroids.forEach((centroid, j) => {
                     const dist = distance(state.color, centroid);
                     if (dist < minDist) {
@@ -92,27 +79,22 @@ document.addEventListener('DOMContentLoaded', async () => {
                         clusterIndex = j;
                     }
                 });
-                if (!clusters[clusterIndex]) clusters[clusterIndex] = [];
-                clusters[clusterIndex].push(i);
+                inertia += minDist * minDist;
             });
 
-            // Update centroids
-            centroids = clusters.map(cluster => {
-                if (cluster.length === 0) return [Math.random(), Math.random(), Math.random()];
-                const newCentroid = [0, 0, 0];
-                cluster.forEach(stateIndex => {
-                    newCentroid[0] += stateData[stateIndex].color[0];
-                    newCentroid[1] += stateData[stateIndex].color[1];
-                    newCentroid[2] += stateData[stateIndex].color[2];
-                });
-                return newCentroid.map(v => v / cluster.length);
-            });
+            // Keep the best result
+            if (inertia < bestInertia) {
+                bestInertia = inertia;
+                bestClusters = clusters;
+                bestCentroids = centroids;
+            }
         }
 
+        // Assign final cluster labels
         stateData.forEach((state, i) => {
             let clusterIndex = 0;
             let minDist = Infinity;
-            centroids.forEach((centroid, j) => {
+            bestCentroids.forEach((centroid, j) => {
                 const dist = distance(state.color, centroid);
                 if (dist < minDist) {
                     minDist = dist;
@@ -122,13 +104,30 @@ document.addEventListener('DOMContentLoaded', async () => {
             state.cluster = clusterIndex;
         });
 
-        return { clusters, centroids };
+        return { clusters: bestClusters, centroids: bestCentroids };
     }
 
     function updateVisualization(result) {
         const { clusters, centroids } = result;
+        const plotDiv = document.getElementById('plot');
+        
+        // Preserve the entire layout, including camera position
+        const layout = {
+            title: 'State Flag Colors in 3D RGB Space',
+            scene: {
+                xaxis: { title: 'Red' },
+                yaxis: { title: 'Green' },
+                zaxis: { title: 'Blue' }
+            },
+            margin: { l: 0, r: 0, b: 0, t: 40 },
+        };
 
-        // Plotting
+        if (plotDiv.layout) {
+            // Copy existing camera settings to the new layout
+            layout.scene.camera = plotDiv.layout.scene.camera;
+        }
+
+        // Prepare data for plotting
         const plotData = [];
 
         // Add lines connecting centroids to points
@@ -193,9 +192,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Add legend entry for centroids (shape only, no color)
         const centroidLegendTrace = {
-            x: [null],
-            y: [null], 
-            z: [null],
+            x: [null], y: [null], z: [null],
             mode: 'markers',
             type: 'scatter3d',
             name: 'Centroids',
@@ -209,37 +206,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
 
         plotData.push(centroidTrace);
-        plotData.push(centroidLegendTrace);        const layout = {
-            title: 'State Flag Colors in 3D RGB Space',
-            scene: {
-                xaxis: { title: 'Red' },
-                yaxis: { title: 'Green' },
-                zaxis: { title: 'Blue' }
-            },
-            margin: { l: 0, r: 0, b: 0, t: 40 }
-        };
+        plotData.push(centroidLegendTrace);
 
-        // Get current camera position
-        const plotDiv = document.getElementById('plot');
-        let currentCamera = null;
-        if (plotDiv.data && plotDiv.data.length > 0) {
-            currentCamera = plotDiv.layout.scene.camera;
-        }
+        // Use Plotly.react for efficient and smooth updates
+        Plotly.react(plotDiv, plotData, layout);
 
-        // Update plot while preserving camera position
-        if (plotDiv.data && plotDiv.data.length > 0) {
-            // Plot exists, update it and restore camera
-            Plotly.react('plot', plotData, layout).then(() => {
-                if (currentCamera) {
-                    Plotly.relayout('plot', { 'scene.camera': currentCamera });
-                }
-            });
-        } else {
-            // First time creating the plot
-            Plotly.newPlot('plot', plotData, layout);
-        }
-
-        // Display clusters
+        // Display clusters in the side panel
         const clustersDiv = document.getElementById('clusters');
         clustersDiv.innerHTML = '';
         clusters.forEach((cluster, i) => {
@@ -277,13 +249,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // Initial run
-    let result = runKMeans();
-    updateVisualization(result);
+    async function initialize() {
+        await loadStateData();
+        if (stateData.length > 0) {
+            let result = runKMeans();
+            updateVisualization(result);
 
-    // Button event listener
-    document.getElementById('rerunButton').addEventListener('click', () => {
-        result = runKMeans();
-        updateVisualization(result);
-    });
+            document.getElementById('rerunButton').addEventListener('click', () => {
+                result = runKMeans();
+                updateVisualization(result);
+            });
+        }
+    }
+
+    initialize();
 });

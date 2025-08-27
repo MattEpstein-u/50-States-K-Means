@@ -1,0 +1,502 @@
+[
+  {
+    "name": "Alabama",
+    "color": [
+      0.887803013889487,
+      0.6331856588490081,
+      0.6806530333125198
+    ],
+    "rgbString": "rgb(226, 161, 174)",
+    "thumbnail": "state_flags_thumbnails/Alabama.png"
+  },
+  {
+    "name": "Alaska",
+    "color": [
+      0.0674444630895235,
+      0.13087834848669758,
+      0.2920697923446695
+    ],
+    "rgbString": "rgb(17, 33, 74)",
+    "thumbnail": "state_flags_thumbnails/Alaska.png"
+  },
+  {
+    "name": "Arizona",
+    "color": [
+      0.45983030302622513,
+      0.280538266963081,
+      0.2277098382819453
+    ],
+    "rgbString": "rgb(117, 72, 58)",
+    "thumbnail": "state_flags_thumbnails/Arizona.png"
+  },
+  {
+    "name": "Arkansas",
+    "color": [
+      0.6814156396682026,
+      0.24222540407085236,
+      0.37835002458157496
+    ],
+    "rgbString": "rgb(174, 62, 96)",
+    "thumbnail": "state_flags_thumbnails/Arkansas.png"
+  },
+  {
+    "name": "California",
+    "color": [
+      0.8585509621354033,
+      0.7453601099801194,
+      0.7454810385446272
+    ],
+    "rgbString": "rgb(219, 190, 190)",
+    "thumbnail": "state_flags_thumbnails/California.png"
+  },
+  {
+    "name": "Colorado",
+    "color": [
+      0.3856880284141475,
+      0.3582317493020268,
+      0.47655842923736114
+    ],
+    "rgbString": "rgb(98, 91, 122)",
+    "thumbnail": "state_flags_thumbnails/Colorado.png"
+  },
+  {
+    "name": "Connecticut",
+    "color": [
+      0.2591639465188182,
+      0.3535981548172243,
+      0.5534962584204995
+    ],
+    "rgbString": "rgb(66, 90, 141)",
+    "thumbnail": "state_flags_thumbnails/Connecticut.png"
+  },
+  {
+    "name": "Delaware",
+    "color": [
+      0.47849054999928226,
+      0.6124148448041369,
+      0.5980628720878908
+    ],
+    "rgbString": "rgb(122, 156, 153)",
+    "thumbnail": "state_flags_thumbnails/Delaware.png"
+  },
+  {
+    "name": "Florida",
+    "color": [
+      0.8879038073181322,
+      0.6173424300860534,
+      0.6071258643922429
+    ],
+    "rgbString": "rgb(226, 157, 155)",
+    "thumbnail": "state_flags_thumbnails/Florida.png"
+  },
+  {
+    "name": "Georgia",
+    "color": [
+      0.605331205480239,
+      0.27007028617110906,
+      0.3704993812710631
+    ],
+    "rgbString": "rgb(154, 69, 94)",
+    "thumbnail": "state_flags_thumbnails/Georgia.png"
+  },
+  {
+    "name": "Hawaii",
+    "color": [
+      0.660781172210095,
+      0.4001601499669692,
+      0.5192127377379174
+    ],
+    "rgbString": "rgb(168, 102, 132)",
+    "thumbnail": "state_flags_thumbnails/Hawaii.png"
+  },
+  {
+    "name": "Idaho",
+    "color": [
+      0.08098551639909371,
+      0.2539370628401609,
+      0.43017517619268897
+    ],
+    "rgbString": "rgb(21, 65, 110)",
+    "thumbnail": "state_flags_thumbnails/Idaho.png"
+  },
+  {
+    "name": "Illinois",
+    "color": [
+      0.9351615079816537,
+      0.9202314410088139,
+      0.9023482283283835
+    ],
+    "rgbString": "rgb(238, 235, 230)",
+    "thumbnail": "state_flags_thumbnails/Illinois.png"
+  },
+  {
+    "name": "Indiana",
+    "color": [
+      0.0573293464530761,
+      0.09702749099273678,
+      0.34370773920384406
+    ],
+    "rgbString": "rgb(15, 25, 88)",
+    "thumbnail": "state_flags_thumbnails/Indiana.png"
+  },
+  {
+    "name": "Iowa",
+    "color": [
+      0.6578338038660274,
+      0.45387338997642185,
+      0.5668727682730622
+    ],
+    "rgbString": "rgb(168, 116, 145)",
+    "thumbnail": "state_flags_thumbnails/Iowa.png"
+  },
+  {
+    "name": "Kansas",
+    "color": [
+      0.09340717710129655,
+      0.21963257373898257,
+      0.39480085410080157
+    ],
+    "rgbString": "rgb(24, 56, 101)",
+    "thumbnail": "state_flags_thumbnails/Kansas.png"
+  },
+  {
+    "name": "Kentucky",
+    "color": [
+      0.07985488939894139,
+      0.0790610562406781,
+      0.4221270823670377
+    ],
+    "rgbString": "rgb(20, 20, 108)",
+    "thumbnail": "state_flags_thumbnails/Kentucky.png"
+  },
+  {
+    "name": "Louisiana",
+    "color": [
+      0.16786735362508504,
+      0.376733425152678,
+      0.5462541219353504
+    ],
+    "rgbString": "rgb(43, 96, 139)",
+    "thumbnail": "state_flags_thumbnails/Louisiana.png"
+  },
+  {
+    "name": "Maine",
+    "color": [
+      0.05065032508898851,
+      0.1889310815520446,
+      0.4021637086719756
+    ],
+    "rgbString": "rgb(13, 48, 103)",
+    "thumbnail": "state_flags_thumbnails/Maine.png"
+  },
+  {
+    "name": "Maryland",
+    "color": [
+      0.6331598717451842,
+      0.44986722921690636,
+      0.3017947185050814
+    ],
+    "rgbString": "rgb(161, 115, 77)",
+    "thumbnail": "state_flags_thumbnails/Maryland.png"
+  },
+  {
+    "name": "Massachusetts",
+    "color": [
+      0.9358485509177205,
+      0.9357407591752092,
+      0.9396844075832694
+    ],
+    "rgbString": "rgb(239, 239, 240)",
+    "thumbnail": "state_flags_thumbnails/Massachusetts.png"
+  },
+  {
+    "name": "Michigan",
+    "color": [
+      0.10633051250789481,
+      0.22364778348656444,
+      0.47497378675573454
+    ],
+    "rgbString": "rgb(27, 57, 121)",
+    "thumbnail": "state_flags_thumbnails/Michigan.png"
+  },
+  {
+    "name": "Minnesota",
+    "color": [
+      0.20227524030784952,
+      0.5252126644631794,
+      0.6721514276262215
+    ],
+    "rgbString": "rgb(52, 134, 171)",
+    "thumbnail": "state_flags_thumbnails/Minnesota.png"
+  },
+  {
+    "name": "Mississippi",
+    "color": [
+      0.4339327806651977,
+      0.17509053333772434,
+      0.2588740571808935
+    ],
+    "rgbString": "rgb(111, 45, 66)",
+    "thumbnail": "state_flags_thumbnails/Mississippi.png"
+  },
+  {
+    "name": "Missouri",
+    "color": [
+      0.5281861975317765,
+      0.3590194256618057,
+      0.4876180714643479
+    ],
+    "rgbString": "rgb(135, 92, 124)",
+    "thumbnail": "state_flags_thumbnails/Missouri.png"
+  },
+  {
+    "name": "Montana",
+    "color": [
+      0.16750689226093074,
+      0.28570835419178653,
+      0.4646036759323056
+    ],
+    "rgbString": "rgb(43, 73, 118)",
+    "thumbnail": "state_flags_thumbnails/Montana.png"
+  },
+  {
+    "name": "Nebraska",
+    "color": [
+      0.12215631137430542,
+      0.2475259106849173,
+      0.4895899260813853
+    ],
+    "rgbString": "rgb(31, 63, 125)",
+    "thumbnail": "state_flags_thumbnails/Nebraska.png"
+  },
+  {
+    "name": "Nevada",
+    "color": [
+      0.023682155077440932,
+      0.21511228576350014,
+      0.6500633211053455
+    ],
+    "rgbString": "rgb(6, 55, 166)",
+    "thumbnail": "state_flags_thumbnails/Nevada.png"
+  },
+  {
+    "name": "New Hampshire",
+    "color": [
+      0.11840013309038842,
+      0.24316905282885481,
+      0.4994530431361784
+    ],
+    "rgbString": "rgb(30, 62, 127)",
+    "thumbnail": "state_flags_thumbnails/New_Hampshire.png"
+  },
+  {
+    "name": "New Jersey",
+    "color": [
+      0.9309905904833524,
+      0.7472039463867934,
+      0.40804444291921316
+    ],
+    "rgbString": "rgb(237, 191, 104)",
+    "thumbnail": "state_flags_thumbnails/New_Jersey.png"
+  },
+  {
+    "name": "New Mexico",
+    "color": [
+      0.9908115205498378,
+      0.7388179009936697,
+      0.004836161335874028
+    ],
+    "rgbString": "rgb(253, 188, 1)",
+    "thumbnail": "state_flags_thumbnails/New_Mexico.png"
+  },
+  {
+    "name": "New York",
+    "color": [
+      0.12499106164072074,
+      0.2556399850284352,
+      0.4453721513935164
+    ],
+    "rgbString": "rgb(32, 65, 114)",
+    "thumbnail": "state_flags_thumbnails/New_York.png"
+  },
+  {
+    "name": "North Carolina",
+    "color": [
+      0.6299922633081417,
+      0.42966559862414955,
+      0.5180196064974306
+    ],
+    "rgbString": "rgb(161, 110, 132)",
+    "thumbnail": "state_flags_thumbnails/North_Carolina.png"
+  },
+  {
+    "name": "North Dakota",
+    "color": [
+      0.10083289104830284,
+      0.26620771052767456,
+      0.41936854890267755
+    ],
+    "rgbString": "rgb(26, 68, 107)",
+    "thumbnail": "state_flags_thumbnails/North_Dakota.png"
+  },
+  {
+    "name": "Ohio",
+    "color": [
+      0.4522515099789916,
+      0.2821012354594616,
+      0.3768865983893558
+    ],
+    "rgbString": "rgb(115, 72, 96)",
+    "thumbnail": "state_flags_thumbnails/Ohio.png"
+  },
+  {
+    "name": "Oklahoma",
+    "color": [
+      0.08374749698561708,
+      0.46866067311349874,
+      0.763628464746074
+    ],
+    "rgbString": "rgb(21, 120, 195)",
+    "thumbnail": "state_flags_thumbnails/Oklahoma.png"
+  },
+  {
+    "name": "Oregon",
+    "color": [
+      0.09752906389953493,
+      0.08277391746870782,
+      0.45123697916666666
+    ],
+    "rgbString": "rgb(25, 21, 115)",
+    "thumbnail": "state_flags_thumbnails/Oregon.png"
+  },
+  {
+    "name": "Pennsylvania",
+    "color": [
+      0.1098039369487755,
+      0.22042183747243876,
+      0.3457023098521537
+    ],
+    "rgbString": "rgb(28, 56, 88)",
+    "thumbnail": "state_flags_thumbnails/Pennsylvania.png"
+  },
+  {
+    "name": "Rhode Island",
+    "color": [
+      0.9852630846609477,
+      0.9687909603077342,
+      0.9056608881399782
+    ],
+    "rgbString": "rgb(251, 247, 231)",
+    "thumbnail": "state_flags_thumbnails/Rhode_Island.png"
+  },
+  {
+    "name": "South Carolina",
+    "color": [
+      0.11017954754650762,
+      0.20235263727105043,
+      0.32997587372247583
+    ],
+    "rgbString": "rgb(28, 52, 84)",
+    "thumbnail": "state_flags_thumbnails/South_Carolina.png"
+  },
+  {
+    "name": "South Dakota",
+    "color": [
+      0.1208442897422641,
+      0.49913689108455883,
+      0.6368747785979626
+    ],
+    "rgbString": "rgb(31, 127, 162)",
+    "thumbnail": "state_flags_thumbnails/South_Dakota.png"
+  },
+  {
+    "name": "Tennessee",
+    "color": [
+      0.6761769209159642,
+      0.09458122265600051,
+      0.1376715549055534
+    ],
+    "rgbString": "rgb(172, 24, 35)",
+    "thumbnail": "state_flags_thumbnails/Tennessee.png"
+  },
+  {
+    "name": "Texas",
+    "color": [
+      0.6093468635166365,
+      0.4149939420771969,
+      0.5501038829468463
+    ],
+    "rgbString": "rgb(155, 106, 140)",
+    "thumbnail": "state_flags_thumbnails/Texas.png"
+  },
+  {
+    "name": "Utah",
+    "color": [
+      0.5335009338375009,
+      0.3751115340782078,
+      0.40736234067629495
+    ],
+    "rgbString": "rgb(136, 96, 104)",
+    "thumbnail": "state_flags_thumbnails/Utah.png"
+  },
+  {
+    "name": "Vermont",
+    "color": [
+      0.06498537245720765,
+      0.23756679445495624,
+      0.3891079444298078
+    ],
+    "rgbString": "rgb(17, 61, 99)",
+    "thumbnail": "state_flags_thumbnails/Vermont.png"
+  },
+  {
+    "name": "Virginia",
+    "color": [
+      0.19463450495040624,
+      0.27381666406496713,
+      0.4755277581155083
+    ],
+    "rgbString": "rgb(50, 70, 121)",
+    "thumbnail": "state_flags_thumbnails/Virginia.png"
+  },
+  {
+    "name": "Washington",
+    "color": [
+      0.10580107491991049,
+      0.5295896079336908,
+      0.3458625682672494
+    ],
+    "rgbString": "rgb(27, 135, 88)",
+    "thumbnail": "state_flags_thumbnails/Washington.png"
+  },
+  {
+    "name": "West Virginia",
+    "color": [
+      0.6678713033508858,
+      0.6961517916825821,
+      0.7236245208310598
+    ],
+    "rgbString": "rgb(170, 178, 185)",
+    "thumbnail": "state_flags_thumbnails/West_Virginia.png"
+  },
+  {
+    "name": "Wisconsin",
+    "color": [
+      0.09756042447176529,
+      0.22722985275277754,
+      0.5222650698960039
+    ],
+    "rgbString": "rgb(25, 58, 133)",
+    "thumbnail": "state_flags_thumbnails/Wisconsin.png"
+  },
+  {
+    "name": "Wyoming",
+    "color": [
+      0.3641362943364235,
+      0.29247109757431566,
+      0.47172849025419095
+    ],
+    "rgbString": "rgb(93, 75, 120)",
+    "thumbnail": "state_flags_thumbnails/Wyoming.png"
+  }
+]
